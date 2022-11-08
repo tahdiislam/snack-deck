@@ -1,11 +1,14 @@
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import cookingImg from '../../assets/cooking.png';
 import { UserContext } from '../../Context/AuthProvider';
 
 const Login = () => {
     const { logInUser } = useContext(UserContext)
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || "/"
 
     // form submit handler
     const handleFormSubmit = e => {
@@ -18,6 +21,7 @@ const Login = () => {
         logInUser(email, password)
             .then(res => {
                 toast.success("User log in successfully.")
+                navigate(from, {replace: true})
             })
             .catch(err => {
                 toast.error(err.message.split("Firebase:").join("").split("(").join("").split("-").join(" ").split("auth/").join("").split(")").join(""))
