@@ -13,11 +13,13 @@ const AllServices = () => {
     },[])
     return (
         <div>
-            <h2 className='text-3xl font-bold text-amber-900 text-center my-4'>{services.length} Services</h2>
-            <div className='grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
-                {
-                    services.map(service => <Service key={service._id} service={service}/>)
-                }
+            <h2 className='text-3xl font-bold text-amber-900 text-center my-4'>Total {services.length} Home made Dishes</h2>
+            <div className='w-full px-4 flex justify-center'>
+                <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+                    {
+                        services.map(service => <Service key={service._id} service={service} />)
+                    }
+                </div>
             </div>
         </div>
     );

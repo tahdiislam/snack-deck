@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 const Header = () => {
     const menuItems = <>
         <li><Link to="/">Home</Link></li>
+        <li><Link to="/services">All Foods</Link></li>
     </>    
     return (
         <div className="navbar bg-base-100 shadow-md rounded-md">
@@ -16,7 +17,7 @@ const Header = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl flex items-center"><img className='h-10 mr-2' src="/snackdeck-logo.png" alt="" /><span className='text-2xl'>Snackdeck</span></a>
+                <Link to="/" className="my-3 btn btn-ghost normal-case text-xl flex items-center"><img className='h-10 mr-2' src="/snackdeck-logo.png" alt="" /><span className='text-2xl'>Snackdeck</span></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
