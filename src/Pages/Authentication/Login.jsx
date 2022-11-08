@@ -1,4 +1,5 @@
 import React from 'react';
+import cookingImg from '../../assets/cooking.png';
 
 const Login = () => {
     return (
@@ -8,12 +9,12 @@ const Login = () => {
                     <img src="" alt="" />
                 </div>
                 <div className="hero-content flex-col lg:flex-row-reverse">
-                    <div className="text-center lg:text-left w-1/2">
-                        <h1 className="text-5xl font-bold">Login now!</h1>
-                        <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                    <div className="text-center lg:text-left w-full  md:w-1/2">
+                        <img src={cookingImg} alt="" />
                     </div>
-                    <div className="card flex-shrink-0 w-1/2 shadow-2xl bg-base-100">
+                    <div className="card flex-shrink-0 w-full md:w-1/2 shadow-2xl bg-base-100">
                         <div className="card-body">
+                            <h1 className='text-center text-3xl font-bold text-amber-900'>Login Here</h1>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
