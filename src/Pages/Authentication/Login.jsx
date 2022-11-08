@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import cookingImg from '../../assets/cooking.png';
 import { UserContext } from '../../Context/AuthProvider';
 
 const Login = () => {
-    const { createUserEmailPass } = useContext(UserContext)
+    const { logInUser } = useContext(UserContext)
 
     // form submit handler
     const handleFormSubmit = e => {
@@ -14,7 +15,13 @@ const Login = () => {
         const password = form.password.value;
         console.log(email, password);
         // login user with email and password
-        
+        logInUser(email, password)
+            .then(res => {
+                toast.success("User log in successfully.")
+            })
+            .catch(err => {
+                toast.error(err.message.split("Firebase:").join("").split("(").join("").split("-").join(" ").split("auth/").join("").split(")").join(""))
+            })
     }
     return (
         <div>
@@ -44,9 +51,9 @@ const Login = () => {
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
                             </div>
-                                <div className="form-control mt-6">
-                                    <button type='submit' className="btn btn-error">Login</button>
-                                </div>
+                            <div className="form-control mt-6">
+                                <button type='submit' className="btn btn-error">Login</button>
+                            </div>
                         </form>
                         <p className='text-center mb-3 font-semibold'><span>New in SnackDeck? <Link className='text-amber-800 underline hover:no-underline' to="/register">Register</Link></span></p>
                     </div>

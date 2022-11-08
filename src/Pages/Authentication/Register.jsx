@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import cookingImg from '../../assets/cooking.png';
 import { UserContext } from '../../Context/AuthProvider';
@@ -17,10 +18,10 @@ const Register = () => {
         // create user with email and password
         createUserEmailPass(email, password)
         .then(result => {
-            console.log(result);
+            toast.success("Account created successfully.")
         })
         .catch(err => {
-            console.log(err);
+            toast.error(err.message.split("Firebase:").join("").split("(").join("").split("-").join(" ").split("auth/").join("").split(")").join(""))
         })
     }
     return (
