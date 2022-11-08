@@ -7,7 +7,6 @@ import ReviewArea from './ReviewArea';
 const ServiceDetails = () => {
     const { user } = useContext(UserContext)
     const food = useLoaderData()
-    console.log(food);
     const { name, _id, image, ratings, price, description } = food.service;
     return (
         <div className='mx-3 md:mx-auto'>
