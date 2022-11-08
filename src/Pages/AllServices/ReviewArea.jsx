@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useLoaderData } from 'react-router-dom';
 import { UserContext } from '../../Context/AuthProvider';
+import ReviewCard from './ReviewCard';
 
 const ReviewArea = () => {
     const [reviews, setReviews] = useState([])
@@ -54,6 +55,13 @@ const ReviewArea = () => {
             </div>
             <div className='my-4'>
                 <h3 className='text-3xl font-semibold text-center'>{reviews.length} reviews found</h3>
+                <section className="my-8text-gray-800">
+                    <div className="container flex flex-col items-center justify-center mx-auto lg:flex-row lg:flex-wrap lg:justify-evenly lg:px-10">
+                        {
+                            reviews.map(review => <ReviewCard key={review._id} review={review}/>)
+                        }
+                    </div>
+                </section>
             </div>
         </div>
     );
