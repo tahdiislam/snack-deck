@@ -1,11 +1,28 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../Context/AuthProvider';
 
 const Header = () => {
+    const { user, logOut, setLoading } = useContext(UserContext)
     const menuItems = <>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/services">All Foods</Link></li>
-    </>    
+    </>;
+
+    // log out handler
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                toast.success("Log Out Successfully")
+            })
+            .catch(err => {
+                toast.error(err.message.split("Firebase:").join("").split("(").join("").split("-").join(" ").split("auth/").join("").split(")").join(""))
+            })
+            .finally(() => {
+                setLoading(false)
+            })
+    }
     return (
         <div className="navbar bg-base-100 shadow-md rounded-md">
             <div className="navbar-start">
@@ -25,9 +42,11 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to="/login">
-                    <button className="btn btn-error">Login</button>
-                </Link>
+                {
+                    !user?.uid ? <><Link to="/login">
+                        <button className="btn btn-error">Login</button>
+                    </Link></> : <><button onClick={handleLogOut} className="btn btn-error">Log Out</button></>
+                }
             </div>
         </div>
     );
