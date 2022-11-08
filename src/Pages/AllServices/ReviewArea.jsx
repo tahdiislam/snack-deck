@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { UserContext } from '../../Context/AuthProvider';
@@ -5,14 +6,29 @@ import { UserContext } from '../../Context/AuthProvider';
 const ReviewArea = () => {
     const { user } = useContext(UserContext)
     const food = useLoaderData()
-    console.log(food);
     const { name, _id, image, ratings, price, description } = food.service;
+    // const { displayName, email, photoURL } = user
 
     // add review handler 
     const handleAddReview = e => {
         e.preventDefault()
         const reviewText = e.target.reviewText.value;
-        console.log(reviewText);
+        const date = new Date().toLocaleDateString();
+        const reviewDetails = {
+            
+        }
+        console.log(reviewDetails);
+        // post review to server
+        axios.post("http://localhost:5000/reviews", {
+            userName: user?.displayName,
+            email: user?.email,
+            reviewerPhoto: user?.photoURL,
+            food_id: _id,
+            date,
+            reviewText
+        })
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
     }
     return (
         <div>

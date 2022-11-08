@@ -1,11 +1,15 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
+import { FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import cookingImg from '../../assets/cooking.png';
 import { UserContext } from '../../Context/AuthProvider';
 
+const googleProvider = new GoogleAuthProvider()
+
 const Login = () => {
-    const { logInUser } = useContext(UserContext)
+    const { logInUser, providerSignIn } = useContext(UserContext)
     const navigate = useNavigate()
     const location = useLocation()
     const from = location.state?.from?.pathname || "/"
@@ -21,7 +25,19 @@ const Login = () => {
         logInUser(email, password)
             .then(res => {
                 toast.success("User log in successfully.")
-                navigate(from, {replace: true})
+                navigate(from, { replace: true })
+            })
+            .catch(err => {
+                toast.error(err.message.split("Firebase:").join("").split("(").join("").split("-").join(" ").split("auth/").join("").split(")").join(""))
+            })
+    }
+
+    // sign In with google 
+    const handleSignInWithGoogle = () => {
+        providerSignIn(googleProvider)
+            .then(res => {
+                console.log(res);
+                toast.success("User sign successfully")
             })
             .catch(err => {
                 toast.error(err.message.split("Firebase:").join("").split("(").join("").split("-").join(" ").split("auth/").join("").split(")").join(""))
@@ -59,6 +75,9 @@ const Login = () => {
                                 <button type='submit' className="btn btn-error">Login</button>
                             </div>
                         </form>
+                        <div className='flex justify-center mb-4'>
+                            <button className='btn btn-ghost text-yellow-400 rounded-full tooltip tooltip-top tooltip-error' data-tip="Sign in with google" onClick={handleSignInWithGoogle}><FaGoogle className='text-2xl' /></button>
+                        </div>
                         <p className='text-center mb-3 font-semibold'><span>New in SnackDeck? <Link className='text-amber-800 underline hover:no-underline' to="/register">Register</Link></span></p>
                     </div>
                 </div>
