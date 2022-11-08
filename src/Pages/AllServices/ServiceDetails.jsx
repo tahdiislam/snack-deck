@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
 import { useLoaderData } from 'react-router-dom';
+import { UserContext } from '../../Context/AuthProvider';
+import ReviewArea from './ReviewArea';
 
 const ServiceDetails = () => {
+    const { user } = useContext(UserContext)
     const food = useLoaderData()
     console.log(food);
     const { name, _id, image, ratings, price, description } = food.service;
     return (
         <div className='mx-3 md:mx-auto'>
-            <div className='rounded-lg shadow-lg w-full md:w-2/3 bg-red-50 mx-auto p-4 my-4 '>
+            <div className='rounded-lg shadow-lg w-full md:w-2/3 bg-red-50 mx-auto p-4 my-4'>
                 <img className='w-full rounded-md' src={image} alt="food image" />
                 <h2 className='text-5xl font-semibold my-4 ml-3 text-amber-900'>{name}</h2>
                 <div>
@@ -18,6 +21,9 @@ const ServiceDetails = () => {
                 <p className='text-lg '>
                     {description}
                 </p>
+            </div>
+            <div className='rounded-lg shadow-lg w-full bg-red-100 mx-auto p-4 my-4'>
+                <ReviewArea/>
             </div>
         </div>
     );
