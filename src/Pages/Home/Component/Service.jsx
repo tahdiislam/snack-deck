@@ -15,7 +15,7 @@ const Service = ({ service }) => {
                 </div>
                 <p>{description.length > 100 ? <>{description.slice(0, 100)}...</> : description}</p>
                 <div className="card-actions justify-end">
-                    <Link to={`/services/${_id}`}><button className="btn btn-error">View details!</button></Link>
+                    <Link to={`/foods/${_id}`}><button className="btn btn-error">View details!</button></Link>
                 </div>
             </div>
         </div>
