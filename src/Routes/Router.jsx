@@ -1,3 +1,4 @@
+import { async } from "@firebase/util";
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
 import AllServices from "../Pages/AllServices/AllServices";
@@ -5,6 +6,8 @@ import ServiceDetails from "../Pages/AllServices/ServiceDetails";
 import Login from "../Pages/Authentication/Login";
 import Register from "../Pages/Authentication/Register";
 import Home from "../Pages/Home/Home";
+import MyReviews from "../Pages/MyReviews/MyReviews";
+import RequireAuth from "./RequireAuth";
 
 export const router = createBrowserRouter([
     {path: '/', element: <Main/>, children: [
@@ -26,5 +29,10 @@ export const router = createBrowserRouter([
                 return fetch(`http://localhost:5000/services/${params.id}`)
             }
         },
+        {
+            path: "/myreviews", element: <RequireAuth>
+                <MyReviews/>
+            </RequireAuth>
+        }
     ]}
 ])

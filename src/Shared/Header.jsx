@@ -8,6 +8,9 @@ const Header = () => {
     const menuItems = <>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/services">All Foods</Link></li>
+        {
+            !user?.uid ? undefined : <li><Link to="/myreviews">My Reviews</Link></li>
+        }
     </>;
 
     // log out handler
