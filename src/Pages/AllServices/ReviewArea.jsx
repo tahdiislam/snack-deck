@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { UserContext } from '../../Context/AuthProvider';
 import ReviewCard from './ReviewCard';
 
@@ -47,18 +47,29 @@ const ReviewArea = () => {
     return (
         <div>
             <h3 className='text-2xl font-semibold text-center my-4'>{name}'s Review</h3>
-            <div>
-                <form onSubmit={handleAddReview} className="flex flex-col items-center">
-                    <textarea name='reviewText' className="textarea textarea-error rounded w-2/3 md:w-1/3" placeholder="write your review" required></textarea>
-                    <button type="submit" className='btn my-4 btn-error'>Add Review</button>
-                </form>
-            </div>
+            {!user?.uid ? <>
+                <div className='flex flex-col items-center my-4'>
+                    <p className='text-lg font-semibold text-amber-900'>Please login to add a review.</p>
+                    <Link to="/login" className='my-3'>
+                        <button className='btn btn-error'>Login</button>
+                    </Link>
+                </div>
+            </> : <>
+                <div>
+                    <form onSubmit={handleAddReview} className="flex flex-col items-center">
+                        <textarea name='reviewText' className="textarea textarea-error rounded w-2/3 md:w-1/3" placeholder="write your review" required></textarea>
+                        <button type="submit" className='btn my-4 btn-error'>Add Review</button>
+                    </form>
+                </div>
+            </>
+            }
             <div className='my-4'>
                 <h3 className='text-3xl font-semibold text-center'>{reviews.length} reviews found</h3>
+                <div className="divider"></div>
                 <section className="my-8text-gray-800">
                     <div className="container flex flex-col items-center justify-center mx-auto lg:flex-row lg:flex-wrap lg:justify-evenly lg:px-10">
                         {
-                            reviews.map(review => <ReviewCard key={review._id} review={review}/>)
+                            reviews.map(review => <ReviewCard key={review._id} review={review} />)
                         }
                     </div>
                 </section>
