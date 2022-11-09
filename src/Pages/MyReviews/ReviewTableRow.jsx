@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 import toast from 'react-hot-toast';
+import { FaPen, FaTrashAlt } from 'react-icons/fa';
 
 const ReviewTableRow = ({ review, reviews, setReviews }) => {
     const { name, reviewText, _id, image, date } = review;
@@ -60,8 +61,8 @@ const ReviewTableRow = ({ review, reviews, setReviews }) => {
                 </td>
                 <td>
                     <div>
-                        <label htmlFor={`my-modal-${_id}`} className="btn btn-success">Edit</label>
-                        <button onClick={() => handleDeleteReview(_id)} className="btn btn-error">Delete</button>
+                        <label htmlFor={`my-modal-${_id}`} className="btn btn-success mr-1"><FaPen className='text-lg' /></label>
+                        <button onClick={() => handleDeleteReview(_id)} className="btn btn-error"><FaTrashAlt className='text-lg'/></button>
                     </div>
 
                     <input type="checkbox" id={`my-modal-${_id}`} className="modal-toggle" />
