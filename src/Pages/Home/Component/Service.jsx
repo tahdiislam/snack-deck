@@ -3,10 +3,13 @@ import { Link } from 'react-router-dom';
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 
 const Service = ({ service }) => {
-    const { name, price, image, ratings, description, _id} = service;
+    const { name, price, image, ratings, description, _id } = service;
     return (
         <div className="card w-96 glass">
-            <figure><img src={image} alt="car!" /></figure>
+            <figure>
+                {/* <img src={image} alt="car!" /> */}
+                    <img src={image} alt="" />
+            </figure>
             <div className="card-body">
                 <h2 className="card-title text-amber-900">{name}</h2>
                 <div className='flex justify-between'>

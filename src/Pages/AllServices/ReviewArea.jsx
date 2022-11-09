@@ -9,7 +9,7 @@ const ReviewArea = () => {
     const [reviews, setReviews] = useState([])
     const { user } = useContext(UserContext)
     const food = useLoaderData()
-    const { name, _id } = food.service;
+    const { name, _id, image } = food.service;
     // const { displayName, email, photoURL } = user
 
     // add review handler 
@@ -24,7 +24,9 @@ const ReviewArea = () => {
             reviewerPhoto: user?.photoURL,
             food_id: _id,
             date,
-            reviewText
+            reviewText,
+            name, 
+            image
         }
 
         // post review to server
