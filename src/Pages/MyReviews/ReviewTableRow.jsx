@@ -42,9 +42,9 @@ const ReviewTableRow = ({ review, reviews, setReviews }) => {
         <>
             <tr>
                 <td>
-                    <div className="flex items-center space-x-3">
-                        <div className="avatar">
-                            <div className="avatar w-24">
+                    <div className="flex flex-col md:flex-row items-center">
+                        <div className="avatar md:mr-2">
+                            <div className="avatar w-20 md:w-24">
                                 <img className='rounded' src={image} alt="Avatar Tailwind CSS Component" />
                             </div>
                         </div>
@@ -55,14 +55,14 @@ const ReviewTableRow = ({ review, reviews, setReviews }) => {
                     </div>
                 </td>
                 <td>
-                    <p className='h-auto w-32  whitespace-pre-wrap'>
+                    <p className='h-auto w-20 md:w-36  whitespace-pre-wrap'>
                         {reviewText}
                     </p>
                 </td>
                 <td>
                     <div>
-                        <label htmlFor={`my-modal-${_id}`} className="btn btn-success mr-1"><FaPen className='text-lg' /></label>
-                        <button onClick={() => handleDeleteReview(_id)} className="btn btn-error"><FaTrashAlt className='text-lg'/></button>
+                        <label htmlFor={`my-modal-${_id}`} className="btn btn-success mr-1"><FaPen className='text-sm md:text-lg' /></label>
+                        <button onClick={() => handleDeleteReview(_id)} className="btn btn-error"><FaTrashAlt className='text-sm md:text-lg'/></button>
                     </div>
 
                     <input type="checkbox" id={`my-modal-${_id}`} className="modal-toggle" />
