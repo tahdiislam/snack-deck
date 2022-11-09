@@ -36,8 +36,8 @@ const Login = () => {
     const handleSignInWithGoogle = () => {
         providerSignIn(googleProvider)
             .then(res => {
-                console.log(res);
                 toast.success("User sign successfully")
+                navigate(from, { replace: true })
             })
             .catch(err => {
                 toast.error(err.message.split("Firebase:").join("").split("(").join("").split("-").join(" ").split("auth/").join("").split(")").join(""))
