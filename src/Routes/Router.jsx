@@ -1,6 +1,7 @@
 import { async } from "@firebase/util";
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
+import AddServices from "../Pages/AddServices";
 import AllServices from "../Pages/AllServices/AllServices";
 import ServiceDetails from "../Pages/AllServices/ServiceDetails";
 import Login from "../Pages/Authentication/Login";
@@ -33,6 +34,11 @@ export const router = createBrowserRouter([
             path: "/myreviews", element: <RequireAuth>
                 <MyReviews/>
             </RequireAuth>
-        }
+        },
+        {
+            path: "/add-food", element: <RequireAuth>
+                <AddServices/>
+            </RequireAuth>
+        },
     ]}
 ])
