@@ -6,12 +6,14 @@ import AllServices from "../Pages/AllServices/AllServices";
 import ServiceDetails from "../Pages/AllServices/ServiceDetails";
 import Login from "../Pages/Authentication/Login";
 import Register from "../Pages/Authentication/Register";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home";
 import MyReviews from "../Pages/MyReviews/MyReviews";
 import RequireAuth from "./RequireAuth";
 
 export const router = createBrowserRouter([
     {path: '/', element: <Main/>, children: [
+        {path: "*", element: <ErrorPage/>},
         {
             path: "/", element: <Home/>
         },
