@@ -16,6 +16,15 @@ const MyReviews = () => {
         })
         .catch(err => console.log(err))
     },[])
+
+    // if no review found
+    if(!reviews.length){
+        return (
+            <div style={{height: "55vh"}} className="flex items-center justify-center">
+                <h1 className='text-4xl font-bold text-amber-900'>No reviews were added</h1>
+            </div>
+        )
+    }
     return (
         <div>
             <h2 className='text-4xl font-bold text-center text-amber-900 my-4'>You have {reviews.length} reviews</h2>

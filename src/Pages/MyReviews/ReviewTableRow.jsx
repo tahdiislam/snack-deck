@@ -13,10 +13,13 @@ const ReviewTableRow = ({ review, reviews, setReviews }) => {
         if (proceed) {
             axios.delete(`http://localhost:5000/reviews/${_id}`)
                 .then(res => {
-                    console.log(res.data)
-                    const filteredReviews = reviews.filter(review => review._id !== _id)
-                    const newReviews = [...filteredReviews]
-                    setReviews(newReviews)
+                    if(res.data.result.deletedCount)
+                    {
+                        toast.success("Review deleted successfully")
+                        const filteredReviews = reviews.filter(review => review._id !== _id)
+                        const newReviews = [...filteredReviews]
+                        setReviews(newReviews)
+                    }
                 })
                 .catch(err => console.log(err))
         }
