@@ -7,14 +7,18 @@ const ReviewTableRow = ({ review, reviews, setReviews }) => {
     // delete review handler 
     const handleDeleteReview = _id => {
         // console.log(_id);
-        axios.delete(`http://localhost:5000/reviews/${_id}`)
-        .then(res => {
-            console.log(res.data)
-            const filteredReviews = reviews.filter(review => review._id !== _id)
-            const newReviews = [...filteredReviews]
-            setReviews(newReviews)
-        })
-        .catch(err => console.log(err))
+        const proceed = window.confirm("Are you sure you want to delete this review?")
+        if (proceed) {
+            axios.delete(`http://localhost:5000/reviews/${_id}`)
+                .then(res => {
+                    console.log(res.data)
+                    const filteredReviews = reviews.filter(review => review._id !== _id)
+                    const newReviews = [...filteredReviews]
+                    setReviews(newReviews)
+                })
+                .catch(err => console.log(err))
+        }
+
     }
     return (
         <tr>

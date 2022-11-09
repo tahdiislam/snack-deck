@@ -18,7 +18,7 @@ const MyReviews = () => {
     },[])
     return (
         <div>
-            <h2>You have {reviews.length} reviews</h2>
+            <h2 className='text-4xl font-bold text-center text-amber-900 my-4'>You have {reviews.length} reviews</h2>
             <div>
                 <div className="overflow-x-auto w-full">
                     <table className="table w-full">
