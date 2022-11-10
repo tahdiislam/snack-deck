@@ -17,7 +17,7 @@ const ReviewArea = () => {
         e.preventDefault()
         const form = e.target
         const reviewText = form.reviewText.value;
-        const date = new Date().toLocaleString();
+        const date = new Date().toLocaleString('en-GB')
 
         const reviewDetails = {
             userName: user?.displayName,
