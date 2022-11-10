@@ -66,27 +66,24 @@ const Login = () => {
     return (
         <div>
             <div className="hero min-h-screen bg-base-200 relative">
-                <div className='absolute'>
-                    <img src="" alt="" />
-                </div>
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center lg:text-left w-full  md:w-1/2">
                         <img src={cookingImg} alt="" />
                     </div>
-                    <div className="card flex-shrink-0 w-full md:w-1/2 shadow-2xl bg-base-100">
+                    <div className="card w-full md:w-1/2 shadow-2xl bg-base-100">
                         <form onSubmit={handleFormSubmit} className="card-body">
                             <h1 className='text-center text-3xl font-bold text-amber-900'>Login Here</h1>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input name='email' type="email" placeholder="email" className="input input-bordered" />
+                                <input required name='email' type="email" placeholder="email" className="input input-bordered" />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input name='password' type="password" placeholder="password" className="input input-bordered" />
+                                <input required name='password' type="password" placeholder="password" className="input input-bordered" />
                                 <label className="label">
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
@@ -95,10 +92,11 @@ const Login = () => {
                                 <button type='submit' className="btn btn-error">Login</button>
                             </div>
                         </form>
+                        <div className="divider">Social Sign In</div>
                         <div className='flex justify-center mb-4'>
                             <button className='btn btn-ghost text-yellow-400 rounded-full tooltip tooltip-top tooltip-error' data-tip="Sign in with google" onClick={handleSignInWithGoogle}><FaGoogle className='text-2xl' /></button>
                         </div>
-                        <p className='text-center mb-3 font-semibold'><span>New in SnackDeck? <Link className='text-amber-800 underline hover:no-underline' to="/register">Register</Link></span></p>
+                        <p className='text-center mb-5 font-semibold'><span>New in SnackDeck? <Link className='text-amber-800 underline hover:no-underline' to="/register">Register</Link></span></p>
                     </div>
                 </div>
             </div>
