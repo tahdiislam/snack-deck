@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
 import { useLoaderData } from 'react-router-dom';
 import { UserContext } from '../../Context/AuthProvider';
@@ -11,6 +12,11 @@ const ServiceDetails = () => {
     const { name, _id, image, ratings, price, description } = food.service;
     // set title
     useTitle(`${name} Details`)
+    
+    // handle order food
+    const handleOrder = () => {
+        toast.success("Ordered Successfully")
+    }
     return (
         <div className='mx-3 md:mx-auto'>
             <div className='rounded-lg shadow-lg w-full md:w-2/3 bg-red-50 mx-auto p-4 my-4'>
@@ -23,6 +29,7 @@ const ServiceDetails = () => {
                 <p className='text-lg '>
                     {description}
                 </p>
+                <button onClick={handleOrder}  className='btn btn-error my-3'>Order Now</button>
             </div>
             <div className='rounded-lg shadow-lg w-full bg-red-100 mx-auto p-4 my-4'>
                 <ReviewArea/>
