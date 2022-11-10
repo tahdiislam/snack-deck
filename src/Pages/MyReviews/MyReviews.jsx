@@ -1,24 +1,33 @@
-import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { UserContext } from '../../Context/AuthProvider';
 import ReviewTableRow from './ReviewTableRow';
 
 const MyReviews = () => {
     const [reviews, setReviews] = useState([])
-    const {user} = useContext(UserContext)
+    const { user, logOut } = useContext(UserContext)
     // console.log(user);
     // load reviews by email
     useEffect(() => {
-        axios.get(`http://localhost:5000/reviews?email=${user?.email}`)
-        .then(res => {
-            // console.log(res)
-            setReviews(res.data.result)
+        fetch(`http://localhost:5000/reviews?email=${user?.email}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem("access-token")}`
+            }
         })
+        .then(res => {
+            console.log(res)
+            if(res.status === 403 || res.status === 401){
+                logOut()
+            }else{
+                return res.json()
+            }
+        })
+        .then(data => setReviews(data?.result))
         .catch(err => console.log(err))
     },[])
 
     // if no review found
-    if(!reviews.length){
+    if(!reviews?.length){
         return (
             <div style={{height: "55vh"}} className="flex items-center justify-center">
                 <h1 className='text-4xl font-bold text-amber-900'>No reviews were added</h1>

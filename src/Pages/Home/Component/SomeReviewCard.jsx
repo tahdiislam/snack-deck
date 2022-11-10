@@ -2,7 +2,7 @@ import React from 'react';
 import reviewLogo from '/review-icon.png';
 
 const SomeReviewCard = ({ review }) => {
-    console.log(review);
+    // console.log(review);
     const { name, reviewText, reviewerPhoto, userName } = review;
     return (
         <div className="flex">
