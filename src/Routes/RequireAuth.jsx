@@ -7,7 +7,7 @@ const RequireAuth = ({children}) => {
     const location = useLocation()
     if(loading){
         return <div className='flex justify-center my-56'>
-            <div className="w-8 h-8 border-2 border-dashed rounded-full animate-spin border-rose-400"></div>
+            <div className="w-12 h-12 border-4 border-dotted rounded-full animate-spin border-rose-400"></div>
         </div>
     }
     if(user && user.uid){
