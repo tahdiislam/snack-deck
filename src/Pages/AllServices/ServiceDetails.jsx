@@ -2,12 +2,15 @@ import React, { useContext } from 'react';
 import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
 import { useLoaderData } from 'react-router-dom';
 import { UserContext } from '../../Context/AuthProvider';
+import useTitle from '../../Hooks/useTitle';
 import ReviewArea from './ReviewArea';
 
 const ServiceDetails = () => {
     const { user } = useContext(UserContext)
     const food = useLoaderData()
     const { name, _id, image, ratings, price, description } = food.service;
+    // set title
+    useTitle(`${name} Details`)
     return (
         <div className='mx-3 md:mx-auto'>
             <div className='rounded-lg shadow-lg w-full md:w-2/3 bg-red-50 mx-auto p-4 my-4'>

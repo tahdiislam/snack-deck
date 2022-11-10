@@ -1,8 +1,12 @@
 import axios from 'axios';
 import React from 'react';
 import toast from 'react-hot-toast';
+import useTitle from '../Hooks/useTitle';
 
 const AddServices = () => {
+    // set title 
+    useTitle("Add New Food")
+
     // add service handler
     const handleAddService = e => {
         e.preventDefault()

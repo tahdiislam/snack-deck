@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import useTitle from '../../Hooks/useTitle';
 import Service from '../Home/Component/Service';
 
 const AllServices = () => {
+    //set title 
+    useTitle("All foods")
     // const [services, setServices] = useState([])
     const foods = useLoaderData()
     const storedFoods = foods.storedServices;

@@ -4,8 +4,11 @@ import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import cookingImg from '../../assets/cooking.png';
 import { UserContext } from '../../Context/AuthProvider';
+import useTitle from '../../Hooks/useTitle';
 
 const Register = () => {
+    // set title
+    useTitle("Register")
     const { createUserEmailPass, userProfileUpdate } = useContext(UserContext)
     const navigate = useNavigate()
     // form submit handler

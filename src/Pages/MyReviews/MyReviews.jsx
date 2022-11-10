@@ -1,10 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { UserContext } from '../../Context/AuthProvider';
+import useTitle from '../../Hooks/useTitle';
 import ReviewTableRow from './ReviewTableRow';
 
 const MyReviews = () => {
     const [reviews, setReviews] = useState([])
+    // set title
+    useTitle("My Reviews")
     const { user, logOut } = useContext(UserContext)
     // console.log(user);
     // load reviews by email

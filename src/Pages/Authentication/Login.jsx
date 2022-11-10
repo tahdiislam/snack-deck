@@ -6,10 +6,13 @@ import { FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import cookingImg from '../../assets/cooking.png';
 import { UserContext } from '../../Context/AuthProvider';
+import useTitle from '../../Hooks/useTitle';
 
 const googleProvider = new GoogleAuthProvider()
 
 const Login = () => {
+    // set title 
+    useTitle("Login")
     const { logInUser, providerSignIn } = useContext(UserContext)
     const navigate = useNavigate()
     const location = useLocation()
