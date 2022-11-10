@@ -13,7 +13,7 @@ const googleProvider = new GoogleAuthProvider()
 const Login = () => {
     // set title 
     useTitle("Login")
-    const { logInUser, providerSignIn } = useContext(UserContext)
+    const { logInUser, providerSignIn, setLoading } = useContext(UserContext)
     const navigate = useNavigate()
     const location = useLocation()
     const from = location.state?.from?.pathname || "/"
@@ -42,6 +42,7 @@ const Login = () => {
             })
             .catch(err => {
                 toast.error(err.message.split("Firebase:").join("").split("(").join("").split("-").join(" ").split("auth/").join("").split(")").join(""))
+                setLoading(false)
             })
     }
 

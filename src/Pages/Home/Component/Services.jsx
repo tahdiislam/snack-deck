@@ -4,14 +4,26 @@ import Service from './Service';
 
 const Services = () => {
     const [services, setServices] = useState([])
+    const [loading, setLoading] = useState(true)
 
     // load services from server
     useEffect(() => {
         fetch("https://assignment-11-two.vercel.app/services?limit=3")
             .then(res => res.json())
-            .then(data => setServices(data.storedServices))
+            .then(data => {
+                setServices(data.storedServices)
+                setLoading(false)
+            })
             .catch(err => console.log(err))
     }, [])
+
+    // return loader
+    if (loading) {
+        return <div className='flex justify-center my-56'>
+            <div className="w-12 h-12 border-4 border-dotted rounded-full animate-spin border-rose-400"></div>
+        </div>
+    }
+
     return (<div className='bg-red-50'>
         <h1 className='text-5xl text-yellow-900 font-bold text-center my-4'>
             Hand make Foods
