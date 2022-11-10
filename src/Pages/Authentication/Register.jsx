@@ -90,7 +90,7 @@ const Register = () => {
                                 </label>
                             </div>
                             <div className="form-control mt-6">
-                                <button type='submit' className="btn btn-error">Login</button>
+                                <button type='submit' className="btn btn-error">Register</button>
                             </div>
                         </form>
                         <p className='text-center mb-3 font-semibold'><span>Already have an account? <Link className='text-amber-800 underline hover:no-underline' to="/login">Login</Link></span></p>

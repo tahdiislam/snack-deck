@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import toast from 'react-hot-toast';
 import { FaPen, FaTrashAlt } from 'react-icons/fa';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 
 const ReviewTableRow = ({ review, reviews, setReviews }) => {
     const { name, reviewText, _id, image, date } = review;
@@ -48,6 +49,12 @@ const ReviewTableRow = ({ review, reviews, setReviews }) => {
                     <div className="flex flex-col md:flex-row items-center">
                         <div className="avatar md:mr-2">
                             <div className="avatar w-20 md:w-24">
+                                <PhotoProvider speed={() => 800}
+                                    easing={(type) => (type === 2 ? 'cubic-bezier(0.36, 0, 0.66, -0.56)' : 'cubic-bezier(0.34, 1.56, 0.64, 1)')} >
+                                    <PhotoView className="rounded" src={image}>
+                                        <img src={image} style={{ objectFit: 'cover' }} alt="" />
+                                    </PhotoView>
+                                </PhotoProvider>
                                 <img className='rounded' src={image} alt="Avatar Tailwind CSS Component" />
                             </div>
                         </div>

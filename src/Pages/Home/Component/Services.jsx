@@ -12,7 +12,7 @@ const Services = () => {
             .then(data => setServices(data.storedServices))
             .catch(err => console.log(err))
     }, [])
-    return (<div>
+    return (<div className='bg-red-50'>
         <h1 className='text-5xl text-yellow-900 font-bold text-center my-4'>
             Hand make Foods
         </h1>

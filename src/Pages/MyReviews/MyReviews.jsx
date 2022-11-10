@@ -5,6 +5,7 @@ import useTitle from '../../Hooks/useTitle';
 import ReviewTableRow from './ReviewTableRow';
 
 const MyReviews = () => {
+    const [loading, setLoading] = useState(true)
     const [reviews, setReviews] = useState([])
     // set title
     useTitle("My Reviews")
@@ -25,9 +26,18 @@ const MyReviews = () => {
                 return res.json()
             }
         })
-        .then(data => setReviews(data?.result))
+        .then(data => {
+            setReviews(data?.result)
+            setLoading(false)
+        })
         .catch(err => console.log(err))
     },[])
+
+    if (loading) {
+        return <div className='flex justify-center my-56'>
+            <div className="w-12 h-12 border-4 border-dotted rounded-full animate-spin border-rose-400"></div>
+        </div>
+    }
 
     // if no review found
     if(!reviews?.length){
