@@ -4,18 +4,29 @@ import useTitle from '../../Hooks/useTitle';
 import Service from '../Home/Component/Service';
 
 const AllServices = () => {
+    const [loading, setLoading] = useState(true)
     //set title 
     useTitle("All foods")
-    // const [services, setServices] = useState([])
-    const foods = useLoaderData()
-    const storedFoods = foods.storedServices;
-    // // load services
-    // useEffect(() => {
-    //     fetch("http://localhost:5000/services")
-    //     .then(res => res.json())
-    //         .then(data => setServices(data.storedServices))
-    //     .catch(err => console.log(err))
-    // },[])
+    const [foods, setFoods] = useState([])
+    // const foods = useLoaderData()
+    const storedFoods = foods;
+    // load services
+    useEffect(() => {
+        fetch("http://localhost:5000/services")
+        .then(res => res.json())
+            .then(data => {
+                setFoods(data.storedServices)
+                setLoading(false)
+            })
+        .catch(err => console.log(err))
+    },[])
+
+    // loader
+    if (loading) {
+        return <div className='flex justify-center my-56'>
+            <div className="w-12 h-12 border-4 border-dotted rounded-full animate-spin border-rose-400"></div>
+        </div>
+    }
     return (
         <div>
             <h2 className='text-3xl font-bold text-amber-900 text-center my-4'>Total {storedFoods.length} Home made Dishes</h2>
