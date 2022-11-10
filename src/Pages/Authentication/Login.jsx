@@ -46,8 +46,18 @@ const Login = () => {
     const handleSignInWithGoogle = () => {
         providerSignIn(googleProvider)
             .then(res => {
-                toast.success("User sign successfully")
-                navigate(from, { replace: true })
+                const user = res.user;
+                const currentUser = {
+                    email: user.email,
+                }
+                // email to the server and get the access token
+                axios.post("http://localhost:5000/jwt", currentUser)
+                    .then(res => {
+                        localStorage.setItem("access-token", res.data.token)
+                        toast.success("User sign in successfully.")
+                        navigate(from, { replace: true })
+                    })
+                    .catch(err => console.log(err))
             })
             .catch(err => {
                 toast.error(err.message.split("Firebase:").join("").split("(").join("").split("-").join(" ").split("auth/").join("").split(")").join(""))

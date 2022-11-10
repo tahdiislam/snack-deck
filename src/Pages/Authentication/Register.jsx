@@ -1,12 +1,13 @@
+import axios from 'axios';
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import cookingImg from '../../assets/cooking.png';
 import { UserContext } from '../../Context/AuthProvider';
 
 const Register = () => {
     const { createUserEmailPass } = useContext(UserContext)
-
+    const navigate = useNavigate()
     // form submit handler
     const handleFormSubmit = e => {
         e.preventDefault()
@@ -17,8 +18,19 @@ const Register = () => {
         console.log(email, password);
         // create user with email and password
         createUserEmailPass(email, password)
-        .then(result => {
-            toast.success("Account created successfully.")
+        .then(res => {
+            const user = res.user;
+            const currentUser = {
+                email: user.email,
+            }
+            // email to the server and get the access token
+            axios.post("http://localhost:5000/jwt", currentUser)
+                .then(res => {
+                    localStorage.setItem("access-token", res.data.token)
+                    toast.success("User account created successfully")
+                    navigate("/")
+                })
+                .catch(err => console.log(err))
         })
         .catch(err => {
             toast.error(err.message.split("Firebase:").join("").split("(").join("").split("-").join(" ").split("auth/").join("").split(")").join(""))
