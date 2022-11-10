@@ -15,7 +15,7 @@ const AuthProvider = ({ children }) => {
         setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
-    
+
     // create user with provider
     const providerSignIn = provider => {
         setLoading(true)
@@ -32,7 +32,7 @@ const AuthProvider = ({ children }) => {
     const userProfileUpdate = details => {
         return updateProfile(auth.currentUser, details);
     }
-    
+
     // log out user 
     const logOut = () => {
         setLoading(true)
@@ -41,19 +41,19 @@ const AuthProvider = ({ children }) => {
     }
 
     // load current user
-    useEffect( () => {
+    useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
             console.log(currentUser);
             setUser(currentUser)
             setLoading(false)
         })
         return () => unSubscribe()
-    },[])
+    }, [])
 
     const authInfo = {
         user,
         createUserEmailPass,
-        loading, 
+        loading,
         setLoading,
         logInUser,
         logOut,
@@ -61,9 +61,14 @@ const AuthProvider = ({ children }) => {
         userProfileUpdate
     }
     return (
-        <UserContext.Provider value={authInfo}>
-            {children}
-        </UserContext.Provider>
+        <div>
+            {loading && <div className='flex justify-center my-56'>
+                <div className="w-12 h-12 border-4 border-dotted rounded-full animate-spin border-rose-400"></div>
+            </div>}
+            <UserContext.Provider value={authInfo}>
+                {children}
+            </UserContext.Provider>
+        </div>
     );
 };
 

@@ -28,7 +28,7 @@ const AllServices = () => {
         </div>
     }
     return (
-        <div>
+        <div className='mb-4'>
             <h2 className='text-3xl font-bold text-amber-900 text-center my-4'>Total {storedFoods.length} Home made Dishes</h2>
             <div className='w-full px-4 flex justify-center'>
                 <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>

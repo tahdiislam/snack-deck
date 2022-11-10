@@ -16,13 +16,15 @@ const AddServices = () => {
         const ratings = form.rating.value;
         const price = form.price.value;
         const description = form.foodDetails.value;
+        const date = new Date().toLocaleString('en-GB')
 
         const service = {
             name,
             image,
             ratings,
             price,
-            description
+            description,
+            date
         }
         // add food to server 
         axios.post("https://assignment-11-two.vercel.app/services", service)
