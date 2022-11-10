@@ -26,7 +26,7 @@ const Home = () => {
                 <span>Promo Code:</span>
                 <span className="font-bold text-lg">SNACKDECK20%</span>
               </div>
-              <Link to="/services" rel="noreferrer noopener"><button className="btn btn-success">Order Now</button></Link>
+              <Link to="/all-foods" rel="noreferrer noopener"><button className="btn btn-success">Order Now</button></Link>
             </div>
           </div>
         </div>
