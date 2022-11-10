@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="container mx-auto">
       <RouterProvider router={router}/>
-      <Toaster />
+      <Toaster position="top-left" />
     </div>
   )
 }
