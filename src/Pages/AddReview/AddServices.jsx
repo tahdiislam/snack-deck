@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 import toast from 'react-hot-toast';
-import useTitle from '../Hooks/useTitle';
+import useTitle from '../../Hooks/useTitle';
 
 const AddServices = () => {
     // set title 
@@ -27,8 +27,7 @@ const AddServices = () => {
         // add food to server 
         axios.post("http://localhost:5000/services", service)
             .then(res => {
-                if (res.data.result.acknowledged)
-                {
+                if (res.data.result.acknowledged) {
                     toast.success("Food added successfully")
                     form.reset()
                 }

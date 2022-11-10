@@ -13,6 +13,7 @@ const Header = () => {
             !user?.uid ? undefined : <><li><Link to="/myreviews">My Reviews</Link></li>
                 <li><Link to="/add-food">Add Food</Link></li></>
         }
+        <li><Link to="/blogs">Blogs</Link></li>
     </>;
 
     // log out handler

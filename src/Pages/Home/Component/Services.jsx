@@ -27,7 +27,7 @@ const Services = () => {
         </div>
         </div>
         <div className='flex justify-center py-4'>
-            <Link to="/services">
+            <Link to="/all-foods">
                 <button className='btn btn-error btn-outline'>See all food</button>
             </Link>
         </div>
