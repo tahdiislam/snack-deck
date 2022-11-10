@@ -25,7 +25,7 @@ const AddServices = () => {
             description
         }
         // add food to server 
-        axios.post("http://localhost:5000/services", service)
+        axios.post("https://assignment-11-two.vercel.app/services", service)
             .then(res => {
                 if (res.data.result.acknowledged) {
                     toast.success("Food added successfully")

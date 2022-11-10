@@ -32,7 +32,7 @@ const Login = () => {
                     email: user.email,
                 }
                 // email to the server and get the access token
-                axios.post("http://localhost:5000/jwt", currentUser)
+                axios.post("https://assignment-11-two.vercel.app/jwt", currentUser)
                     .then(res => {
                         localStorage.setItem("access-token", res.data.token)
                         toast.success("User log in successfully.")
@@ -54,7 +54,7 @@ const Login = () => {
                     email: user.email,
                 }
                 // email to the server and get the access token
-                axios.post("http://localhost:5000/jwt", currentUser)
+                axios.post("https://assignment-11-two.vercel.app/jwt", currentUser)
                     .then(res => {
                         localStorage.setItem("access-token", res.data.token)
                         toast.success("User sign in successfully.")

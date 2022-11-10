@@ -21,7 +21,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/all-foods", element: <AllServices />,
-                loader: async () => fetch("http://localhost:5000/services")
+                loader: async () => fetch("https://assignment-11-two.vercel.app/services")
             },
             {
                 path: "/login", element: <Login />
@@ -31,7 +31,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/foods/:id", element: <ServiceDetails />, loader: async ({ params }) => {
-                    return fetch(`http://localhost:5000/services/${params.id}`)
+                    return fetch(`https://assignment-11-two.vercel.app/services/${params.id}`)
                 }
             },
             {
@@ -45,8 +45,8 @@ export const router = createBrowserRouter([
                 </RequireAuth>
             },
             {
-                path: "/blogs", element: <Blog/>, loader: () => {
-                    return fetch("http://localhost:5000/blogs")
+                path: "/blogs", element: <Blog />, loader: () => {
+                    return fetch("https://assignment-11-two.vercel.app/blogs")
                 }
             }
         ]

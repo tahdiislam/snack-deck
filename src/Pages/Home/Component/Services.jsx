@@ -7,7 +7,7 @@ const Services = () => {
 
     // load services from server
     useEffect(() => {
-        fetch("http://localhost:5000/services?limit=3")
+        fetch("https://assignment-11-two.vercel.app/services?limit=3")
             .then(res => res.json())
             .then(data => setServices(data.storedServices))
             .catch(err => console.log(err))
@@ -17,14 +17,14 @@ const Services = () => {
             Hand make Foods
         </h1>
         <div className='w-full px-4 flex justify-center'>
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 relative'>
-            {/* <div className='absolute'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 relative'>
+                {/* <div className='absolute'>
                 <img className='w-screen' style={{ height: "32rem" }} src="https://images.unsplash.com/photo-1495195134817-aeb325a55b65?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=876&q=80" alt="" />
             </div> */}
-            {
-                services.map(service => <Service key={service._id} service={service}/>)
-            }
-        </div>
+                {
+                    services.map(service => <Service key={service._id} service={service} />)
+                }
+            </div>
         </div>
         <div className='flex justify-center py-4'>
             <Link to="/all-foods">

@@ -13,25 +13,25 @@ const MyReviews = () => {
     // console.log(user);
     // load reviews by email
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?email=${user?.email}`, {
+        fetch(`https://assignment-11-two.vercel.app/reviews?email=${user?.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem("access-token")}`
             }
         })
-        .then(res => {
-            console.log(res)
-            if(res.status === 403 || res.status === 401){
-                logOut()
-            }else{
-                return res.json()
-            }
-        })
-        .then(data => {
-            setReviews(data?.result)
-            setLoading(false)
-        })
-        .catch(err => console.log(err))
-    },[])
+            .then(res => {
+                console.log(res)
+                if (res.status === 403 || res.status === 401) {
+                    logOut()
+                } else {
+                    return res.json()
+                }
+            })
+            .then(data => {
+                setReviews(data?.result)
+                setLoading(false)
+            })
+            .catch(err => console.log(err))
+    }, [])
 
     if (loading) {
         return <div className='flex justify-center my-56'>
@@ -40,9 +40,9 @@ const MyReviews = () => {
     }
 
     // if no review found
-    if(!reviews?.length){
+    if (!reviews?.length) {
         return (
-            <div style={{height: "55vh"}} className="flex items-center justify-center">
+            <div style={{ height: "55vh" }} className="flex items-center justify-center">
                 <h1 className='text-4xl font-bold text-amber-900'>No reviews were added</h1>
             </div>
         )
@@ -62,7 +62,7 @@ const MyReviews = () => {
                         </thead>
                         <tbody>
                             {
-                                reviews.map(review => <ReviewTableRow key={review._id} review={review} reviews={reviews} setReviews={setReviews}/>)
+                                reviews.map(review => <ReviewTableRow key={review._id} review={review} reviews={reviews} setReviews={setReviews} />)
                             }
                         </tbody>
                     </table>

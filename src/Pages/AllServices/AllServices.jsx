@@ -12,14 +12,14 @@ const AllServices = () => {
     const storedFoods = foods;
     // load services
     useEffect(() => {
-        fetch("http://localhost:5000/services")
-        .then(res => res.json())
+        fetch("https://assignment-11-two.vercel.app/services")
+            .then(res => res.json())
             .then(data => {
                 setFoods(data.storedServices)
                 setLoading(false)
             })
-        .catch(err => console.log(err))
-    },[])
+            .catch(err => console.log(err))
+    }, [])
 
     // loader
     if (loading) {

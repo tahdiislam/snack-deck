@@ -12,10 +12,9 @@ const ReviewTableRow = ({ review, reviews, setReviews }) => {
         // console.log(_id);
         const proceed = window.confirm("Are you sure you want to delete this review?")
         if (proceed) {
-            axios.delete(`http://localhost:5000/reviews/${_id}`)
+            axios.delete(`https://assignment-11-two.vercel.app/reviews/${_id}`)
                 .then(res => {
-                    if(res.data.result.deletedCount)
-                    {
+                    if (res.data.result.deletedCount) {
                         toast.success("Review deleted successfully")
                         const filteredReviews = reviews.filter(review => review._id !== _id)
                         const newReviews = [...filteredReviews]
@@ -34,7 +33,7 @@ const ReviewTableRow = ({ review, reviews, setReviews }) => {
         // console.log(updatedReviewText);
 
         // update method
-        axios.put(`http://localhost:5000/reviews/${_id}`, { updatedReviewText })
+        axios.put(`https://assignment-11-two.vercel.app/reviews/${_id}`, { updatedReviewText })
             .then(res => {
                 if (res.data.result.modifiedCount) {
                     toast.success("Review updated successfully.")
@@ -72,7 +71,7 @@ const ReviewTableRow = ({ review, reviews, setReviews }) => {
                 <td>
                     <div>
                         <label htmlFor={`my-modal-${_id}`} className="btn btn-success mr-1"><FaPen className='text-sm md:text-lg' /></label>
-                        <button onClick={() => handleDeleteReview(_id)} className="btn btn-error"><FaTrashAlt className='text-sm md:text-lg'/></button>
+                        <button onClick={() => handleDeleteReview(_id)} className="btn btn-error"><FaTrashAlt className='text-sm md:text-lg' /></button>
                     </div>
 
                     <input type="checkbox" id={`my-modal-${_id}`} className="modal-toggle" />

@@ -25,29 +25,29 @@ const Register = () => {
         // console.log(email, password, details);
         // create user with email and password
         createUserEmailPass(email, password)
-        .then(res => {
-            // update user profile
-            userProfileUpdate(details)
             .then(res => {
-                // profile update successfully
+                // update user profile
+                userProfileUpdate(details)
+                    .then(res => {
+                        // profile update successfully
+                    })
+                    .catch(err => console.log(err))
+                const user = res.user;
+                const currentUser = {
+                    email: user.email,
+                }
+                // email to the server and get the access token
+                axios.post("https://assignment-11-two.vercel.app/jwt", currentUser)
+                    .then(res => {
+                        localStorage.setItem("access-token", res.data.token)
+                        toast.success("User account created successfully")
+                        navigate("/")
+                    })
+                    .catch(err => console.log(err))
             })
-            .catch(err => console.log(err))
-            const user = res.user;
-            const currentUser = {
-                email: user.email,
-            }
-            // email to the server and get the access token
-            axios.post("http://localhost:5000/jwt", currentUser)
-                .then(res => {
-                    localStorage.setItem("access-token", res.data.token)
-                    toast.success("User account created successfully")
-                    navigate("/")
-                })
-                .catch(err => console.log(err))
-        })
-        .catch(err => {
-            toast.error(err.message.split("Firebase:").join("").split("(").join("").split("-").join(" ").split("auth/").join("").split(")").join(""))
-        })
+            .catch(err => {
+                toast.error(err.message.split("Firebase:").join("").split("(").join("").split("-").join(" ").split("auth/").join("").split(")").join(""))
+            })
     }
     return (
         <div>

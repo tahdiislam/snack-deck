@@ -18,7 +18,7 @@ const ReviewArea = () => {
         const form = e.target
         const reviewText = form.reviewText.value;
         const date = new Date().toLocaleString();
-        
+
         const reviewDetails = {
             userName: user?.displayName,
             email: user?.email,
@@ -26,12 +26,12 @@ const ReviewArea = () => {
             food_id: _id,
             date,
             reviewText,
-            name, 
+            name,
             image
         }
 
         // post review to server
-        axios.post("http://localhost:5000/reviews", reviewDetails)
+        axios.post("https://assignment-11-two.vercel.app/reviews", reviewDetails)
             .then(res => {
                 toast.success("Review added successfully")
                 const newReviews = [...reviews, reviewDetails]
@@ -43,7 +43,7 @@ const ReviewArea = () => {
 
     // get previous review 
     useEffect(() => {
-        axios.get(`http://localhost:5000/reviews/${_id}`)
+        axios.get(`https://assignment-11-two.vercel.app/reviews/${_id}`)
             .then(data => setReviews(data.data.result))
             .catch(err => console.log(err))
     }, [])
