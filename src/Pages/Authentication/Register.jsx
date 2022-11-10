@@ -6,19 +6,29 @@ import cookingImg from '../../assets/cooking.png';
 import { UserContext } from '../../Context/AuthProvider';
 
 const Register = () => {
-    const { createUserEmailPass } = useContext(UserContext)
+    const { createUserEmailPass, userProfileUpdate } = useContext(UserContext)
     const navigate = useNavigate()
     // form submit handler
     const handleFormSubmit = e => {
         e.preventDefault()
         const form = e.target;
         const name = form.name.value;
+        const imageUrl = form.photoUrl.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
+        const details = {
+            displayName: name, photoURL: imageUrl
+        }
+        // console.log(email, password, details);
         // create user with email and password
         createUserEmailPass(email, password)
         .then(res => {
+            // update user profile
+            userProfileUpdate(details)
+            .then(res => {
+                // profile update successfully
+            })
+            .catch(err => console.log(err))
             const user = res.user;
             const currentUser = {
                 email: user.email,
@@ -53,19 +63,25 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input name='name' type="text" placeholder="name" className="input input-bordered" required/>
+                                <input name='name' type="text" placeholder="name" className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input name='email' type="email" placeholder="email" className="input input-bordered" required/>
+                                <input name='photoUrl' type="text" placeholder="Phot Url" className="input input-bordered" required />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Email</span>
+                                </label>
+                                <input name='email' type="email" placeholder="email" className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input name='password' type="password" placeholder="password" className="input input-bordered" required/>
+                                <input name='password' type="password" placeholder="password" className="input input-bordered" required />
                                 <label className="label">
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
