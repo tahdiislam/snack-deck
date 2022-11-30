@@ -62,8 +62,9 @@ const AuthProvider = ({ children }) => {
     }
     return (
         <div>
-            {loading && <div className='flex justify-center my-56'>
-                <div className="w-12 h-12 border-4 border-dotted rounded-full animate-spin border-rose-400"></div>
+            {loading && <div className='flex justify-center mt-2
+            '>
+                <div className="w-10 h-10 border-4 border-dotted rounded-full animate-spin border-rose-400"></div>
             </div>}
             <UserContext.Provider value={authInfo}>
                 {children}
