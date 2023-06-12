@@ -4,20 +4,20 @@
 
 ## Uses Technology
 
-### Frontend Technology  
-- React, React-Router, 
+### Frontend Technology
+- React, React-Router,
 - Axios, React-icon,
 - React-photo-view,
 - Firebase Authentication,
 - Firebase Hosting,
-- TailwindCSS and Daisyui, 
-- MambaUI and KitWild.   
+- TailwindCSS and Daisyui,
+- MambaUI and KitWild.
 
 ### Backend Technology
 - NodeJS, ExpressJS,
 - Json Web Token,
 - Cors, Dotenv,
-- MongoDB For Database. 
+- MongoDB For Database.
 
 ### Site Description
 
