@@ -11,7 +11,7 @@
 - Firebase Authentication,
 - Firebase Hosting,
 - TailwindCSS and Daisyui,
-- MambaUI and KitWild.
+- MambaUI and KitWild. 
 
 ### Backend Technology
 - NodeJS, ExpressJS,
