@@ -8,7 +8,7 @@
 - React, React-Router,
 - Axios, React-icon, 
 - React-photo-view, 
-- Firebase Authentication,  
+- Firebase Authentication,   
 - Firebase Hosting,
 - TailwindCSS and Daisyui,
 - MambaUI and KitWild. 
