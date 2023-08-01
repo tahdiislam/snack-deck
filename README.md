@@ -1,6 +1,6 @@
 # SnackDeck
 
-## live link: [SnackDeck](https://snackdeck-a569c.web.app/)
+## live link: [SnackDeck](https://snackdeck-a569c.web.app/) 
 
 ## Uses Technology
 
